@@ -3,11 +3,11 @@ package br.pro.hashi.ensino.desagil.aps.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TripleInputOrGateTest {
-	private TripleInputOrGate gate;
+public class TripleInputAndGateTest {
+	private TripleInputAndGate gate;
 
 	private void build(boolean a, boolean b, boolean c) {
-		gate = new TripleInputOrGate();
+		gate = new TripleInputAndGate();
 		gate.connect(0, new MockEmitter(a));
 		gate.connect(1, new MockEmitter(b));
 		gate.connect(2, new MockEmitter(c));
@@ -20,39 +20,39 @@ public class TripleInputOrGateTest {
 	}
 
 	@Test
-	public void whenReceivingFalseAndFalseAndTrueShouldReturnTrue() {
+	public void whenReceivingFalseAndFalseAndTrueShouldReturnFalse() {
 		build(false, false, true);
-		Assertions.assertTrue(gate.read());
+		Assertions.assertFalse(gate.read());
 	}
 
 	@Test
-	public void whenReceivingFalseAndTrueAndFalseShouldReturnTrue() {
+	public void whenReceivingFalseAndTrueAndFalseShouldReturnFalse() {
 		build(false, true, false);
-		Assertions.assertTrue(gate.read());
+		Assertions.assertFalse(gate.read());
 	}
 
 	@Test
-	public void whenReceivingTrueAndFalseAndFalseShouldReturnTrue() {
+	public void whenReceivingTrueAndFalseAndFalseShouldReturnFalse() {
 		build(true, false, false);
-		Assertions.assertTrue(gate.read());
+		Assertions.assertFalse(gate.read());
 	}
 
 	@Test
-	public void whenReceivingTrueAndTrueAndFalseShouldReturnTrue() {
+	public void whenReceivingTrueAndTrueAndFalseShouldReturnFalse() {
 		build(true, true, false);
-		Assertions.assertTrue(gate.read());
+		Assertions.assertFalse(gate.read());
 	}
 
 	@Test
-	public void whenReceivingTrueAndFalseAndTrueShouldReturnTrue() {
+	public void whenReceivingTrueAndFalseAndTrueShouldReturnFalse() {
 		build(true, false, true);
-		Assertions.assertTrue(gate.read());
+		Assertions.assertFalse(gate.read());
 	}
 
 	@Test
-	public void whenReceivingFalseAndTrueAndTrueShouldReturnTrue() {
+	public void whenReceivingFalseAndTrueAndTrueShouldReturnFalse() {
 		build(false, true, true);
-		Assertions.assertTrue(gate.read());
+		Assertions.assertFalse(gate.read());
 	}
 
 	@Test
